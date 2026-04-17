@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SD Church — My Portal</title>
- @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0d6efd">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-primary" style="background:#0d6efd;">
+   <nav class="navbar navbar-expand-lg member-navbar px-3">
         <div class="container">
             <a class="navbar-brand text-white fw-bold" href="{{ route('member.dashboard') }}">
                 <i class="bi bi-church me-2"></i>SD Church

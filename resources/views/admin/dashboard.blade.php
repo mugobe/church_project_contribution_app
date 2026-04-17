@@ -4,35 +4,67 @@
 <h4 class="mb-4"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h4>
 
 {{-- Top Stats --}}
+
 <div class="row g-3 mb-4">
-    <div class="col-md-2 col-6">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <div class="text-muted small mb-1">Active Members</div>
-            <div class="fs-5 fw-bold">{{ $totalMembers }}</div>
+    <div class="col-md-4 col-6">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+                <div class="stat-label">Active Members</div>
+                <div class="stat-value">{{ $totalMembers }}</div>
+            </div>
         </div>
     </div>
-    <div class="col-md-2 col-6">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <div class="text-muted small mb-1">Projects</div>
-            <div class="fs-5 fw-bold">{{ $totalProjects }}</div>
+    <div class="col-md-4 col-6">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon bg-info bg-opacity-10 text-info">
+                <i class="bi bi-folder-fill"></i>
+            </div>
+            <div>
+                <div class="stat-label">Projects</div>
+                <div class="stat-value">{{ $totalProjects }}</div>
+            </div>
         </div>
     </div>
-    <div class="col-md-3 col-6">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <div class="text-muted small mb-1">Total Allocated</div>
-            <div class="fs-6 fw-bold text-primary">UGX {{ number_format($totalAllocated) }}</div>
+    <div class="col-md-4 col-6">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                <i class="bi bi-cash-coin"></i>
+            </div>
+            <div>
+                <div class="stat-label">Total Allocated</div>
+                <div class="stat-value text-primary" style="font-size:1.1rem;">
+                    UGX {{ number_format($totalAllocated) }}
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-3 col-6">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <div class="text-muted small mb-1">Total Collected</div>
-            <div class="fs-6 fw-bold text-success">UGX {{ number_format($totalCollected) }}</div>
+    <div class="col-md-6 col-6">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon bg-success bg-opacity-10 text-success">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+                <div class="stat-label">Total Collected</div>
+                <div class="stat-value text-success" style="font-size:1.1rem;">
+                    UGX {{ number_format($totalCollected) }}
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-2 col-6">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <div class="text-muted small mb-1">Outstanding</div>
-            <div class="fs-6 fw-bold text-danger">UGX {{ number_format($totalOutstanding) }}</div>
+    <div class="col-md-6 col-6">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                <i class="bi bi-exclamation-circle-fill"></i>
+            </div>
+            <div>
+                <div class="stat-label">Outstanding</div>
+                <div class="stat-value text-danger" style="font-size:1.1rem;">
+                    UGX {{ number_format($totalOutstanding) }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
