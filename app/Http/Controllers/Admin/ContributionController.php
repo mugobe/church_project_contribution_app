@@ -38,7 +38,7 @@ class ContributionController extends Controller
         }
 
         $contributions = $query->paginate(25)->withQueryString();
-        $projects      = Project::where('status', 'active')->get();
+      $projects = Project::whereIn('status', ['active', 'draft'])->get();
         $members       = Member::with('user')->where('status', 'active')->get();
         $totalAmount   = $query->sum('amount');
 
@@ -49,9 +49,11 @@ class ContributionController extends Controller
 
     public function create()
     {
-        $projects = Project::where('status', 'active')->get();
-        $members  = Member::with('user')->where('status', 'active')->get();
-        return view('admin.contributions.create', compact('projects', 'members'));
+
+$projects = Project::whereIn('status', ['active', 'draft'])->get();
+    $members  = Member::with('user')->where('status', 'active')->get();
+    return view('admin.contributions.create', compact('projects', 'members'));
+
     }
 
     public function store(Request $request)
