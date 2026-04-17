@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ContributionController;
+use App\Http\Controllers\Member\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,8 +68,10 @@ Route::get('allocation-hint', function (Request $request) {
 | Member Portal Routes
 |--------------------------------------------------------------------------
 */
+
+
 Route::prefix('member')->name('member.')->middleware(['auth', 'member'])->group(function () {
-    Route::get('/dashboard', fn() => view('member.dashboard'))->name('dashboard');
-    Route::get('/projects', fn() => view('member.projects'))->name('projects');
-    Route::get('/contributions', fn() => view('member.contributions'))->name('contributions');
+    Route::get('/dashboard',      [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/projects',       [DashboardController::class, 'projects'])->name('projects');
+    Route::get('/contributions',  [DashboardController::class, 'contributions'])->name('contributions');
 });
