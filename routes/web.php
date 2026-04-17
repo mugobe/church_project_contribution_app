@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ContributionController;
 use App\Http\Controllers\Member\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Auth::routes(['register' => false]); // disable self-registration, admin creates
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', fn() => view('admin.dashboard'))->name('dashboard');
+   
+     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Members
     Route::resource('members', MemberController::class);
