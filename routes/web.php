@@ -37,10 +37,28 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::post('projects/{project}/import-allocations', [ProjectController::class, 'importAllocations'])->name('projects.import-allocations');
 
     // Contributions (controller coming soon)
-    // Route::resource('contributions', ContributionController::class);
+  Route::resource('contributions', ContributionController::class)->except(['edit', 'update']);
 
     // Reports (controller coming soon)
     // Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+
+
+    // inside admin group
+Route::get('allocation-hint', function (Request $request) {
+    $allocation = \App\Models\Allocation::where('member_id', $request->member_id)
+        ->where('project_id', $request->project_id)
+        ->first();
+
+    $paid = $allocation ? \App\Models\Contribution::where('member_id', $request->member_id)
+        ->where('project_id', $request->project_id)
+        ->sum('amount') : 0;
+
+    return response()->json([
+        'allocation' => $allocation,
+        'paid'       => $paid,
+        'balance'    => $allocation ? max(0, $allocation->allocated_amount - $paid) : 0,
+    ]);
+})->name('allocation-hint');
 });
 
 /*

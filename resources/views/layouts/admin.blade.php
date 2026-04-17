@@ -24,11 +24,11 @@
         <i class="bi bi-folder me-1"></i>Projects
     </a>
 </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="bi bi-cash-stack me-1"></i>Contributions
-        </a>
-    </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.contributions.index') }}">
+        <i class="bi bi-cash-stack me-1"></i>Contributions
+    </a>
+</li>
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="bi bi-bar-chart me-1"></i>Reports
